@@ -12,8 +12,12 @@ use App\Http\Controllers\main_page\WhyChooseUsController;
 use App\Http\Controllers\pages\AboutUsController;
 use App\Http\Controllers\pages\CertificationsController;
 use App\Http\Controllers\pages\FaqsController;
+use App\Http\Controllers\pages\GalleryController;
+use App\Http\Controllers\pages\PrivacyController;
 use App\Http\Controllers\pages\ProductsPageController;
 use App\Http\Controllers\pages\ServicesPageController;
+use App\Http\Controllers\pages\SettingController;
+use App\Http\Controllers\pages\TermsController;
 use App\Models\MPBoxHeader;
 use Illuminate\Support\Facades\Route;
 
@@ -252,6 +256,79 @@ Route::namespace('/pages')
             Route::post('/', [FaqsController::class, 'store'])->name('store');
             Route::get('/{id}/edit', [FaqsController::class, 'edit'])->name('edit');
             Route::put('/{id}', [FaqsController::class, 'update'])->name('update');
+        });
+
+    });
+// End About Us Controller
+
+// End Terms Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/term'),
+            'as' => 'term.',
+        ], function () {
+            Route::get('/', [TermsController::class, 'terms'])->name('terms')->withoutMiddleware('auth');
+            Route::get('/index', [TermsController::class, 'index'])->name('index');
+            Route::get('/create', [TermsController::class, 'create'])->name('create');
+            Route::post('/', [TermsController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [TermsController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [TermsController::class, 'update'])->name('update');
+        });
+
+    });
+// End About Us Controller
+
+// End Terms Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/privacy'),
+            'as' => 'privacy.',
+        ], function () {
+            Route::get('/', [PrivacyController::class, 'privacy'])->name('privacy')->withoutMiddleware('auth');
+            Route::get('/index', [PrivacyController::class, 'index'])->name('index');
+            Route::get('/create', [PrivacyController::class, 'create'])->name('create');
+            Route::post('/', [PrivacyController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [PrivacyController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [PrivacyController::class, 'update'])->name('update');
+        });
+
+    });
+// End About Us Controller
+
+// End Terms Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/gallery'),
+            'as' => 'gallery.',
+        ], function () {
+            Route::get('/', [GalleryController::class, 'gallery'])->name('gallery')->withoutMiddleware('auth');
+            Route::get('/index', [GalleryController::class, 'index'])->name('index');
+            Route::get('/create', [GalleryController::class, 'create'])->name('create');
+            Route::post('/', [GalleryController::class, 'store'])->name('store');
+            Route::get('/{id}', [GalleryController::class, 'show'])->name('show');
+            Route::get('/{id}/edit', [GalleryController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [GalleryController::class, 'update'])->name('update');
+        });
+
+    });
+// End About Us Controller
+
+// End Terms Controller
+Route::namespace('/pages')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::group([
+            'prefix' => ('/settings'),
+            'as' => 'setting.',
+        ], function () {
+            Route::get('/{id}/edit', [SettingController::class, 'edit'])->name('edit');
+            Route::put('/{id}', [SettingController::class, 'update'])->name('update');
         });
 
     });

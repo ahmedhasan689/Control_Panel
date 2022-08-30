@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2014 Ivan Bozhanov (http://vakata.com)
  *
- * Licensed same as jquery - under the terms of the MIT License
+ * Licensed same as jquery - under the terms_page of the MIT License
  *   http://www.opensource.org/licenses/mit-license.php
  */
 /*!
